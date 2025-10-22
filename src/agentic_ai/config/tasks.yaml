@@ -1,0 +1,124 @@
+disease_diagnosis_task:
+  description: >
+    Analyze the provided crop information and symptoms to diagnose any diseases, pests, or health issues.
+
+    Crop Details:
+    - Crop Type: {crop_type}
+    - Symptoms Observed: {symptoms}
+    - Environmental Conditions: {environment}
+    - Growth Stage: {growth_stage}
+    - Location/Region: {location}
+
+    Examine all symptoms carefully and provide:
+    1. Primary diagnosis with confidence level
+    2. Possible alternative diagnoses
+    3. Disease/pest lifecycle and spread pattern
+    4. Severity assessment
+    5. Potential yield impact if left untreated
+
+  expected_output: >
+    A comprehensive diagnostic report identifying the disease/pest with:
+    - Disease/Pest name (common and scientific)
+    - Confidence level of diagnosis (percentage)
+    - Detailed explanation of symptoms matching
+    - Disease progression stage
+    - Expected impact on crop yield
+    - Risk of spread to other plants
+    Formatted as structured text with clear sections.
+  agent: crop_disease_diagnostician
+
+treatment_recommendation_task:
+  description: >
+    Based on the disease diagnosis, create a detailed treatment plan.
+    Consider the crop type ({crop_type}), disease severity, and farmer's resources.
+
+    Provide multiple treatment options:
+    1. Immediate action plan (within 24-48 hours)
+    2. Organic/natural treatment methods
+    3. Chemical treatment options (if necessary)
+    4. Integrated pest management approach
+
+    Include:
+    - Specific products or ingredients with dosage
+    - Application methods and frequency
+    - Safety precautions
+    - Expected timeline for recovery
+    - Cost estimates (low/medium/high budget options)
+
+  expected_output: >
+    A detailed treatment plan with:
+    - Step-by-step treatment instructions
+    - Multiple treatment options (organic and chemical)
+    - Product recommendations with application rates
+    - Timeline and frequency of application
+    - Safety measures and precautions
+    - Expected recovery timeline
+    - Estimated costs for each treatment option
+    Formatted as a practical action plan that farmers can easily follow.
+  agent: treatment_specialist
+  context:
+    - disease_diagnosis_task
+
+prevention_strategy_task:
+  description: >
+    Develop a comprehensive prevention strategy to avoid future occurrences of this disease
+    and improve overall crop health.
+
+    Focus on:
+    1. Cultural practices (crop rotation, spacing, sanitation)
+    2. Soil health management
+    3. Water and irrigation optimization
+    4. Disease-resistant varieties
+    5. Monitoring and early detection methods
+    6. Seasonal considerations
+
+    Consider the crop type ({crop_type}), local climate ({location}), and farming scale.
+
+  expected_output: >
+    A comprehensive prevention guide including:
+    - Long-term preventive measures and best practices
+    - Crop rotation recommendations
+    - Soil management strategies
+    - Irrigation and water management tips
+    - Recommended disease-resistant varieties
+    - Early warning signs to monitor
+    - Seasonal farming calendar
+    - Sanitation and field hygiene practices
+    Formatted as an actionable prevention playbook.
+  agent: prevention_advisor
+  context:
+    - disease_diagnosis_task
+    - treatment_recommendation_task
+
+farming_advice_task:
+  description: >
+    Provide comprehensive farming advice for {crop_type} cultivation including
+    general best practices, seasonal planning, and optimization strategies.
+
+    Cover:
+    1. Optimal growing conditions for this crop
+    2. Soil preparation and fertilization schedule
+    3. Irrigation requirements
+    4. Growth stages and care requirements
+    5. Harvest timing and methods
+    6. Post-harvest handling
+    7. Market considerations and value addition
+
+    Tailor advice for the region: {location}
+
+  expected_output: >
+    A complete farming guide covering:
+    - Crop-specific growing requirements
+    - Detailed seasonal farming calendar
+    - Soil preparation and nutrient management
+    - Irrigation schedule and water requirements
+    - Care requirements at each growth stage
+    - Harvesting guidelines and best practices
+    - Post-harvest handling and storage
+    - Market insights and value-addition opportunities
+    Formatted as a farmer-friendly reference guide.
+  agent: farming_consultant
+  context:
+    - disease_diagnosis_task
+    - treatment_recommendation_task
+    - prevention_strategy_task

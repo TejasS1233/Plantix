@@ -1,0 +1,13 @@
+.env
+__pycache__/
+.DS_Store
+*.pyc
+.venv/
+venv/
+env/
+*.log
+.vscode/
+.idea/
+*.db
+*.sqlite
+plantix_farming_report.md
