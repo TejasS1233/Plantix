@@ -45,7 +45,7 @@ pip install -e .
    Create a `.env` file in the root directory:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
+GEMINI_API_KEY=your_key_here
 # Or use other LLM providers supported by CrewAI
 ```
 
@@ -226,11 +226,11 @@ This is a CrewAI-based project. To contribute:
 
 This project is built using CrewAI framework.
 
-## �‍💻 Author
+## Author
 
 Created by **TejasS1233**
 
-## �🙏 Acknowledgments
+## 🙏 Acknowledgments
 
 - Built with [CrewAI](https://www.crewai.com/)
 - Powered by Large Language Models
